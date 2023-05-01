@@ -1,5 +1,6 @@
 import requests
 
+#MADE WITH ♥ BY SHRUM#0002
 
 def uwu():
     channel = input("Enter channel: ")
@@ -26,8 +27,11 @@ def uwu():
     data = {"operationName":"UseViewCount","variables":{"channelLogin":channel},"extensions":{"persistedQuery":{"version":1,"sha256Hash":"00b11c9c428f79ae228f30080a06ffd8226a1f068d6f52fbc057cbde66e994c2"}}}
 
     response = requests.post("https://gql.twitch.tv/gql", headers=headers, json=data)
-    livecount = response.json()["data"]["user"]["stream"]["viewersCount"]
-    print(livecount)
+    try:
+        livecount = response.json()["data"]["user"]["stream"]["viewersCount"]
+        print(livecount)
+    except:
+        print("User is not streaming..")
 
 
 uwu()
